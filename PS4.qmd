@@ -1,0 +1,469 @@
+---
+title: "PS4"
+format: html
+editor: visual
+---
+
+My GitHub link: <https://github.com/andrewmengyueyan/PS_4.git>
+
+# Problem 1
+
+```{r}
+#install.packages("nycflights13")
+library(nycflights13)
+library(tidyverse)
+```
+
+##### a(1)
+
+```{r}
+tibble_1 <- flights %>%
+  left_join(airports, by = c("origin" = "faa")) %>%
+  group_by(name) %>%
+  summarize(AvgDepdelay = mean(dep_delay, na.rm = TRUE), 
+            MedDepdelay = median(dep_delay, na.rm = TRUE)) %>%
+  arrange(desc(AvgDepdelay))
+knitr::kable(tibble_1)
+```
+
+##### a(2)
+
+```{r}
+tibble_2 <- flights %>%
+  group_by(dest) %>%
+  summarize(Avgarrdelay = mean(arr_delay, na.rm = TRUE), 
+            Medarrdelay = median(arr_delay, na.rm = TRUE),
+            nrows = n()) %>%
+  filter(nrows >= 10) %>%
+  arrange(desc(Avgarrdelay)) %>%
+  select(-nrows) %>%
+  left_join(airports, by = c("dest" = "faa")) %>%
+  select(name, Avgarrdelay, Medarrdelay) %>%
+  filter(! is.na(name))
+knitr::kable(tibble_2)
+```
+
+##### b
+
+I use distance/flightduration to represent the average speed of each flight.
+
+```{r}
+flight_with_Speed <- flights %>%
+  mutate(FlightDuration = air_time/60) %>%
+  mutate(Speed = distance/FlightDuration)
+tibble_3 <- flight_with_Speed %>%
+  left_join(planes, by = "tailnum") %>%
+  group_by(model) %>%
+  summarize(AvgSpeed = mean(Speed), number = n()) %>%
+  arrange(desc(AvgSpeed)) %>%
+  slice(1)
+knitr::kable(tibble_3)
+```
+
+777-222 has the largest average speed 482.63 MPH and in total 4 flights.
+
+# Problem 2
+
+```{r}
+nnmaps <- read.csv("E:/study/Stat 506/PS4/chicago-nmmaps.csv")
+library(tidyverse)
+```
+
+```{r}
+get_temp <- function(month, year, data, celsius = FALSE, average_fn = mean){
+  valid_month_names <- c(month.abb, month.name)
+  if (!is.numeric(month) && !is.character(month)){
+    message("Month must be a numeric value or a string.")
+    return(NULL)
+  } else if (is.numeric(month) && !(month %in% 1:12)){
+    message("Numeric month must be in the range of 1-12")
+    return(NULL)
+  } else if (is.character(month) && !(month %in% valid_month_names)){
+    message("String month must be a valid month abbreviation or name (e.g., 'Jan' for January).")
+    return(NULL)
+  }
+  if (! is.numeric(year)){
+    message("Year must be a numeric value.")
+    return(NULL)
+  }
+  if (year < 1997 || year > 2001){
+    message(("Year must be 1997-2001"))
+    return(NULL)
+  }
+  if (! is.logical(celsius)){
+    message("celcius must be a logical value")
+    return(NULL)
+  }
+  if (! is.function(average_fn)){
+    message("average_fn must be a function")
+    return(NULL)
+  }
+  if (is.character(month)){
+    month <- c(match(month, month.abb), match(month, month.name))
+    month <- month[!is.na(month)]
+  }
+  avgtemp_F <- data %>%
+    filter(month_numeric == {{month}}, year == {{year}}) %>%
+    summarize(avgtemp_F = average_fn(temp))
+  if (celsius){
+    avgtemp_C <- data %>%
+      filter(month_numeric == {{month}}, year == {{year}}) %>%
+      mutate(temp_C = (temp - 32) * 5/9) %>%
+      summarize(avgtemp_C = average_fn(temp_C))
+    return(avgtemp_C)
+  } else{
+    return(avgtemp_F)
+  }
+}
+```
+
+```{r}
+get_temp("Apr", 1999, data = nnmaps)
+get_temp("Apr", 1999, data = nnmaps, celsius = TRUE)
+get_temp(10, 1998, data = nnmaps, average_fn = median)
+get_temp(13, 1998, data = nnmaps)
+get_temp(2, 2005, data = nnmaps)
+get_temp("November", 1999, data =nnmaps, celsius = TRUE,
+         average_fn = function(x) {
+           x %>% sort -> x
+           x[2:(length(x) - 1)] %>% mean %>% return
+         })
+```
+
+# Problem 3
+
+##### a
+
+```         
+%let in_path = ~/sasuser.v94;
+%let out_path = ~/sasuser.v94; 
+libname in_lib "&in_path."; 
+libname out_lib "&out_path.";
+
+/*Sort the data by the order of state and rename it*/
+proc sort
+  data=in_lib.recs2020_public_v5
+  out=out_lib.recs2020; 
+  by state_name; 
+run; 
+/*add a column which is the square of nweight*/
+data out_lib.recs2020;
+  set in_lib.recs2020;
+  nweight_sq = nweight * nweight;
+run; 
+/*aggregate the data by state and prepare to calculate the ESS*/
+proc summary data=out_lib.recs2020;
+  class state_name; 
+  output out=out_lib.ess_by_state_recs2020
+    sum(nweight) = num
+    sum(nweight_sq) = den;
+run; 
+/*calculate the ESS*/
+data out_lib.ess_by_state_recs2020_1; 
+  set in_lib.ess_by_state_recs2020;
+  where _type_ = 1; 
+  ess = num * num / den; 
+  drop num den _type_;
+run;
+/*Calculate which state has the most percentage*/
+proc sql;
+  select state_name, (ess / sum(ess)) as record_percentage
+  from out_lib.ess_by_state_recs2020_1
+  order by record_percentage desc;
+quit;
+/*Calculate how much percentage Michigan has*/
+proc sql;
+  select state_name, (ess / sum(ess)) as record_percentage
+  from out_lib.ess_by_state_recs2020_1
+  having state_name = "Michigan";
+quit;
+```
+
+##### b
+
+``` sas
+/*Only select positive value*/
+data out_lib.positive_dollarel;
+  set out_lib.recs2020_public_v5;
+  if DOLLAREL > 0;
+run;
+/*draw the histogram*/
+proc sgplot data=out_lib.positive_dollarel;
+  histogram DOLLAREL;
+run;
+```
+
+##### c
+
+``` sas
+/*take the log of DOLLAREL*/
+data out_lib.log_dollarel;
+  set out_lib.positive_dollarel;
+  logDOLLAREL = log(DOLLAREL);
+run;
+/*draw the histogram*/
+proc sgplot data=out_lib.log_dollarel;
+  histogram logDOLLAREL;
+run;
+```
+
+##### d
+
+``` sas
+/*clean the data*/
+data out_lib.P3Q4;
+  set in_lib.log_dollarel;
+  if PRKGPLC1 ne -2;
+run;
+/*do regression*/
+proc reg data=in_lib.P3Q4 plots(maxpoints=none);
+  model logDOLLAREL = TOTROOMS PRKGPLC1;
+  weight NWEIGHT;
+run;
+```
+
+##### e
+
+``` sas
+/*Calculate the predicted value*/
+proc reg data=in_lib.P3Q4 plots(maxpoints=none);
+  model logDOLLAREL = TOTROOMS PRKGPLC1;
+  weight NWEIGHT;
+  output out=out_lib.PredictedData predicted=predicted_logDOLLAREL;
+run;
+
+data out_lib.predict_vs_actual;
+  set in_lib.predicteddata;
+  predicted_DOLLAREL = exp(predicted_logDOLLAREL);
+  keep DOLLAREL predicted_DOLLAREL;
+run;
+/*draw scatter plot*/
+proc sgplot data=out_lib.predict_vs_actual;
+  scatter x=DOLLAREL y=predicted_DOLLAREL;
+  xaxis label='Actual DOLLAREL';
+  yaxis label='Predicted DOLLAREL';
+  title 'Scatter Plot between Actual & Predicted DOLLAREL';
+run;
+```
+
+# Problem 4
+
+##### a
+
+The codebook was generated by the descriptive statistics of all variables by a statistical software.
+
+### SAS Section
+
+##### b
+
+``` sas
+%let in_path = ~/sasuser.v94;
+%let out_path = ~/sasuser.v94; 
+libname in_lib "&in_path."; 
+libname out_lib "&out_path.";
+
+LIBNAME PS4Q4 '~/sasuser.v94/';
+
+proc sql;
+    create table PS4Q4.sasdata AS
+    select CaseID, B3, ND2, B7_b, GH1, ppeducat, race_5cat, weight_pop
+    from PS4Q4.public2022;
+quit;
+```
+
+##### c(1)
+
+``` sas
+proc export data=PS4Q4.sasdata
+    outfile= "&out_path/Problem4.csv"
+    dbms=csv;
+run;
+```
+
+### Stata Section
+
+##### c(2)
+
+``` stata
+. insheet using "E:\study\Stat 506\PS4\Problem4.csv", clear
+(8 vars, 11,667 obs)
+```
+
+##### d
+
+I can demonstrate that I have successfully extracted the appropriate data by showing the number of observations and variables.
+
+```         
+. summarize
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      caseid |     11,667    5889.991    3397.957          1      11775
+          b3 |     11,667    2.764035    .9363138          1          5
+         nd2 |     11,667    2.633753     .772071          1          5
+        b7_b |     11,667    1.825148    .7296764          1          4
+         gh1 |     11,667    1.964944    .9790652          1          4
+-------------+---------------------------------------------------------
+    ppeducat |     11,667    3.071398    .9462462          1          4
+   race_5cat |     11,667    1.630925    1.090644          1          5
+  weight_pop |     11,667    21866.31    10952.98   3666.639   88732.65
+```
+
+##### e
+
+``` stata
+. * e
+. egen binary_b3 = group(b3), label
+
+. replace binary_b3 = 0 if b3 <= 2
+(4,296 real changes made)
+
+. replace binary_b3 = 1 if b3 >= 3
+(7,371 real changes made)
+
+. drop b3
+```
+
+##### f
+
+``` stata
+. * use logit command
+. svyset caseid [pw=weight_pop], psu(caseid)
+
+Sampling weights: weight_pop
+             VCE: linearized
+     Single unit: missing
+        Strata 1: <one>
+ Sampling unit 1: caseid
+           FPC 1: <zero>
+
+. svy: logit binary_b3 i.nd2 i.b7_b i.gh1 i.ppeducat i.race_5cat
+(running logit on estimation sample)
+
+Survey: Logistic regression
+
+Number of strata =      1                        Number of obs   =      11,667
+Number of PSUs   = 11,667                        Population size = 255,114,223
+                                                 Design df       =      11,666
+                                                 F(17, 11650)    =       56.70
+                                                 Prob > F        =      0.0000
+
+------------------------------------------------------------------------------
+             |             Linearized
+   binary_b3 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+         nd2 |
+          2  |   .0816722   .0925755     0.88   0.378    -.0997913    .2631356
+          3  |   .0618535   .0854686     0.72   0.469    -.1056792    .2293863
+          4  |   .2533887   .2045978     1.24   0.216    -.1476572    .6544347
+          5  |    .229354   .1672799     1.37   0.170    -.0985426    .5572505
+             |
+        b7_b |
+          2  |   1.110649   .0488662    22.73   0.000     1.014863    1.206435
+          3  |   1.806251   .0796863    22.67   0.000     1.650052    1.962449
+          4  |   2.485125   .3463415     7.18   0.000     1.806238    3.164013
+             |
+         gh1 |
+          2  |  -.0702921    .056382    -1.25   0.213    -.1808102     .040226
+          3  |   .0190607   .0587346     0.32   0.746    -.0960689    .1341904
+          4  |   .3465325   .0994184     3.49   0.000     .1516557    .5414092
+             |
+    ppeducat |
+          2  |   .0767668   .1036364     0.74   0.459    -.1263778    .2799115
+          3  |   .1075004   .1008067     1.07   0.286    -.0900975    .3050983
+          4  |   .2288346    .099574     2.30   0.022     .0336528    .4240164
+             |
+   race_5cat |
+          2  |   .7060141   .0810818     8.71   0.000     .5470803     .864948
+          3  |   .1635498   .0711263     2.30   0.021     .0241303    .3029693
+          4  |   .4567994   .1259942     3.63   0.000     .2098298    .7037691
+          5  |  -.0210142   .1659436    -0.13   0.899    -.3462915    .3042631
+             |
+       _cons |  -.4852955   .1301287    -3.73   0.000    -.7403696   -.2302214
+------------------------------------------------------------------------------
+
+. * use logistic command
+. svyset caseid [pw=weight_pop], psu(caseid)
+
+Sampling weights: weight_pop
+             VCE: linearized
+     Single unit: missing
+        Strata 1: <one>
+ Sampling unit 1: caseid
+           FPC 1: <zero>
+
+. svy: logit binary_b3 i.nd2 i.b7_b i.gh1 i.ppeducat i.race_5cat
+(running logit on estimation sample)
+
+Survey: Logistic regression
+
+Number of strata =      1                        Number of obs   =      11,667
+Number of PSUs   = 11,667                        Population size = 255,114,223
+                                                 Design df       =      11,666
+                                                 F(17, 11650)    =       56.70
+                                                 Prob > F        =      0.0000
+
+------------------------------------------------------------------------------
+             |             Linearized
+   binary_b3 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+         nd2 |
+          2  |   .0816722   .0925755     0.88   0.378    -.0997913    .2631356
+          3  |   .0618535   .0854686     0.72   0.469    -.1056792    .2293863
+          4  |   .2533887   .2045978     1.24   0.216    -.1476572    .6544347
+          5  |    .229354   .1672799     1.37   0.170    -.0985426    .5572505
+             |
+        b7_b |
+          2  |   1.110649   .0488662    22.73   0.000     1.014863    1.206435
+          3  |   1.806251   .0796863    22.67   0.000     1.650052    1.962449
+          4  |   2.485125   .3463415     7.18   0.000     1.806238    3.164013
+             |
+         gh1 |
+          2  |  -.0702921    .056382    -1.25   0.213    -.1808102     .040226
+          3  |   .0190607   .0587346     0.32   0.746    -.0960689    .1341904
+          4  |   .3465325   .0994184     3.49   0.000     .1516557    .5414092
+             |
+    ppeducat |
+          2  |   .0767668   .1036364     0.74   0.459    -.1263778    .2799115
+          3  |   .1075004   .1008067     1.07   0.286    -.0900975    .3050983
+          4  |   .2288346    .099574     2.30   0.022     .0336528    .4240164
+             |
+   race_5cat |
+          2  |   .7060141   .0810818     8.71   0.000     .5470803     .864948
+          3  |   .1635498   .0711263     2.30   0.021     .0241303    .3029693
+          4  |   .4567994   .1259942     3.63   0.000     .2098298    .7037691
+          5  |  -.0210142   .1659436    -0.13   0.899    -.3462915    .3042631
+             |
+       _cons |  -.4852955   .1301287    -3.73   0.000    -.7403696   -.2302214
+------------------------------------------------------------------------------
+```
+
+##### g(1)
+
+``` stata
+. outsheet using "E:\study\Stat 506\PS4\Problem4_data_exported.csv", comma
+r(602);
+
+end of do-file
+```
+
+### R Section
+
+##### g(2)
+
+```{r}
+data <- read.csv("E:/study/Stat 506/PS4/Problem4_data_exported.csv")
+```
+
+##### h
+
+```{r}
+library(survey)
+data$binary_b3 <- as.integer(data$binary_b3)
+model <- svyglm(binary_b3 ~ as.factor(nd2) + as.factor(b7_b) + as.factor(gh1) + as.factor(ppeducat) + as.factor(race_5cat), design = svydesign(id = ~ caseid, weight = ~ weight_pop, data = data), family = quasibinomial)
+summary(model)
+pseudo_R_sq <- psrsq(model)
+pseudo_R_sq
+```
+
+The Pseudo-R\^2 is 0.109.
