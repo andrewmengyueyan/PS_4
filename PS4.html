@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PS4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="PS4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="PS4_files/libs/quarto-html/quarto.js"></script>
+<script src="PS4_files/libs/quarto-html/popper.min.js"></script>
+<script src="PS4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="PS4_files/libs/quarto-html/anchor.min.js"></script>
+<link href="PS4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="PS4_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="PS4_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="PS4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="PS4_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PS4</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>My GitHub link: <a href="https://github.com/andrewmengyueyan/PS_4.git" class="uri">https://github.com/andrewmengyueyan/PS_4.git</a></p>
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("nycflights13")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<section id="a1" class="level5">
+<h5 class="anchored" data-anchor-id="a1">a(1)</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tibble_1 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">AvgDepdelay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">MedDepdelay =</span> <span class="fu">median</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(AvgDepdelay))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tibble_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">AvgDepdelay</th>
+<th style="text-align: right;">MedDepdelay</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Newark Liberty Intl</td>
+<td style="text-align: right;">15.10795</td>
+<td style="text-align: right;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">John F Kennedy Intl</td>
+<td style="text-align: right;">12.11216</td>
+<td style="text-align: right;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">La Guardia</td>
+<td style="text-align: right;">10.34688</td>
+<td style="text-align: right;">-3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="a2" class="level5">
+<h5 class="anchored" data-anchor-id="a2">a(2)</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tibble_2 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Avgarrdelay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Medarrdelay =</span> <span class="fu">median</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrows =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(nrows <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Avgarrdelay)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>nrows) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, Avgarrdelay, Medarrdelay) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span> <span class="fu">is.na</span>(name))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tibble_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">Avgarrdelay</th>
+<th style="text-align: right;">Medarrdelay</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Columbia Metropolitan</td>
+<td style="text-align: right;">41.7641509</td>
+<td style="text-align: right;">28.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tulsa Intl</td>
+<td style="text-align: right;">33.6598639</td>
+<td style="text-align: right;">14.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Will Rogers World</td>
+<td style="text-align: right;">30.6190476</td>
+<td style="text-align: right;">16.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jackson Hole Airport</td>
+<td style="text-align: right;">28.0952381</td>
+<td style="text-align: right;">15.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mc Ghee Tyson</td>
+<td style="text-align: right;">24.0692042</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dane Co Rgnl Truax Fld</td>
+<td style="text-align: right;">20.1960432</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Richmond Intl</td>
+<td style="text-align: right;">20.1112532</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Akron Canton Regional Airport</td>
+<td style="text-align: right;">19.6983373</td>
+<td style="text-align: right;">3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Des Moines Intl</td>
+<td style="text-align: right;">19.0057361</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gerald R Ford Intl</td>
+<td style="text-align: right;">18.1895604</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Birmingham Intl</td>
+<td style="text-align: right;">16.8773234</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Theodore Francis Green State</td>
+<td style="text-align: right;">16.2346369</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Greenville-Spartanburg International</td>
+<td style="text-align: right;">15.9354430</td>
+<td style="text-align: right;">-0.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cincinnati Northern Kentucky Intl</td>
+<td style="text-align: right;">15.3645638</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Savannah Hilton Head Intl</td>
+<td style="text-align: right;">15.1295060</td>
+<td style="text-align: right;">-1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Manchester Regional Airport</td>
+<td style="text-align: right;">14.7875536</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eppley Afld</td>
+<td style="text-align: right;">14.6988984</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yeager</td>
+<td style="text-align: right;">14.6716418</td>
+<td style="text-align: right;">-1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kansas City Intl</td>
+<td style="text-align: right;">14.5140584</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albany Intl</td>
+<td style="text-align: right;">14.3971292</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">General Mitchell Intl</td>
+<td style="text-align: right;">14.1672204</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Piedmont Triad</td>
+<td style="text-align: right;">14.1126005</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Washington Dulles Intl</td>
+<td style="text-align: right;">13.8642021</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cherry Capital Airport</td>
+<td style="text-align: right;">12.9684211</td>
+<td style="text-align: right;">-10.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">James M Cox Dayton Intl</td>
+<td style="text-align: right;">12.6804861</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Louisville International Airport</td>
+<td style="text-align: right;">12.6693841</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chicago Midway Intl</td>
+<td style="text-align: right;">12.3642236</td>
+<td style="text-align: right;">-1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sacramento Intl</td>
+<td style="text-align: right;">12.1099291</td>
+<td style="text-align: right;">4.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jacksonville Intl</td>
+<td style="text-align: right;">11.8448342</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nashville Intl</td>
+<td style="text-align: right;">11.8124589</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Portland Intl Jetport</td>
+<td style="text-align: right;">11.6604021</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Greater Rochester Intl</td>
+<td style="text-align: right;">11.5606446</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hartsfield Jackson Atlanta Intl</td>
+<td style="text-align: right;">11.3001128</td>
+<td style="text-align: right;">-1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lambert St Louis Intl</td>
+<td style="text-align: right;">11.0784645</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Norfolk Intl</td>
+<td style="text-align: right;">10.9490934</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baltimore Washington Intl</td>
+<td style="text-align: right;">10.7267338</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Memphis Intl</td>
+<td style="text-align: right;">10.6453144</td>
+<td style="text-align: right;">-2.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Port Columbus Intl</td>
+<td style="text-align: right;">10.6013229</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Charleston Afb Intl</td>
+<td style="text-align: right;">10.5929685</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philadelphia Intl</td>
+<td style="text-align: right;">10.1271901</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Raleigh Durham Intl</td>
+<td style="text-align: right;">10.0523810</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indianapolis Intl</td>
+<td style="text-align: right;">9.9404341</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Charlottesville-Albemarle</td>
+<td style="text-align: right;">9.5000000</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cleveland Hopkins Intl</td>
+<td style="text-align: right;">9.1816113</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ronald Reagan Washington Natl</td>
+<td style="text-align: right;">9.0669520</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Burlington Intl</td>
+<td style="text-align: right;">8.9509960</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Buffalo Niagara Intl</td>
+<td style="text-align: right;">8.9459519</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Syracuse Hancock Intl</td>
+<td style="text-align: right;">8.9039250</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Denver Intl</td>
+<td style="text-align: right;">8.6065002</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Palm Beach Intl</td>
+<td style="text-align: right;">8.5629721</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bob Hope</td>
+<td style="text-align: right;">8.1756757</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fort Lauderdale Hollywood Intl</td>
+<td style="text-align: right;">8.0821215</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bangor Intl</td>
+<td style="text-align: right;">8.0279330</td>
+<td style="text-align: right;">-9.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Asheville Regional Airport</td>
+<td style="text-align: right;">8.0038314</td>
+<td style="text-align: right;">-1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pittsburgh Intl</td>
+<td style="text-align: right;">7.6809905</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gallatin Field</td>
+<td style="text-align: right;">7.6000000</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NW Arkansas Regional</td>
+<td style="text-align: right;">7.4657258</td>
+<td style="text-align: right;">-2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tampa Intl</td>
+<td style="text-align: right;">7.4085250</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Charlotte Douglas Intl</td>
+<td style="text-align: right;">7.3603189</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Minneapolis St Paul Intl</td>
+<td style="text-align: right;">7.2701689</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">William P Hobby</td>
+<td style="text-align: right;">7.1761882</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bradley Intl</td>
+<td style="text-align: right;">7.0485437</td>
+<td style="text-align: right;">-10.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">San Antonio Intl</td>
+<td style="text-align: right;">6.9453718</td>
+<td style="text-align: right;">-9.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">South Bend Rgnl</td>
+<td style="text-align: right;">6.5000000</td>
+<td style="text-align: right;">-3.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Louis Armstrong New Orleans Intl</td>
+<td style="text-align: right;">6.4901750</td>
+<td style="text-align: right;">-6.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Key West Intl</td>
+<td style="text-align: right;">6.3529412</td>
+<td style="text-align: right;">7.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eagle Co Rgnl</td>
+<td style="text-align: right;">6.3043478</td>
+<td style="text-align: right;">-4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Austin Bergstrom Intl</td>
+<td style="text-align: right;">6.0199088</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chicago Ohare Intl</td>
+<td style="text-align: right;">5.8766148</td>
+<td style="text-align: right;">-8.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Orlando Intl</td>
+<td style="text-align: right;">5.4546431</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Detroit Metro Wayne Co</td>
+<td style="text-align: right;">5.4299635</td>
+<td style="text-align: right;">-7.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Portland Intl</td>
+<td style="text-align: right;">5.1415797</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nantucket Mem</td>
+<td style="text-align: right;">4.8522727</td>
+<td style="text-align: right;">-3.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wilmington Intl</td>
+<td style="text-align: right;">4.6355140</td>
+<td style="text-align: right;">-7.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Myrtle Beach Intl</td>
+<td style="text-align: right;">4.6034483</td>
+<td style="text-align: right;">-13.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albuquerque International Sunport</td>
+<td style="text-align: right;">4.3818898</td>
+<td style="text-align: right;">-5.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">George Bush Intercontinental</td>
+<td style="text-align: right;">4.2407904</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Norman Y Mineta San Jose Intl</td>
+<td style="text-align: right;">3.4481707</td>
+<td style="text-align: right;">-7.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Southwest Florida Intl</td>
+<td style="text-align: right;">3.2381496</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">San Diego Intl</td>
+<td style="text-align: right;">3.1391657</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sarasota Bradenton Intl</td>
+<td style="text-align: right;">3.0824313</td>
+<td style="text-align: right;">-5.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metropolitan Oakland Intl</td>
+<td style="text-align: right;">3.0776699</td>
+<td style="text-align: right;">-9.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">General Edward Lawrence Logan Intl</td>
+<td style="text-align: right;">2.9143922</td>
+<td style="text-align: right;">-9.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">San Francisco Intl</td>
+<td style="text-align: right;">2.6728915</td>
+<td style="text-align: right;">-8.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yampa Valley</td>
+<td style="text-align: right;">2.1428571</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Phoenix Sky Harbor Intl</td>
+<td style="text-align: right;">2.0970473</td>
+<td style="text-align: right;">-6.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Montrose Regional Airport</td>
+<td style="text-align: right;">1.7857143</td>
+<td style="text-align: right;">-10.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Los Angeles Intl</td>
+<td style="text-align: right;">0.5471109</td>
+<td style="text-align: right;">-7.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dallas Fort Worth Intl</td>
+<td style="text-align: right;">0.3221268</td>
+<td style="text-align: right;">-9.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Miami Intl</td>
+<td style="text-align: right;">0.2990598</td>
+<td style="text-align: right;">-9.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mc Carran Intl</td>
+<td style="text-align: right;">0.2577285</td>
+<td style="text-align: right;">-8.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Salt Lake City Intl</td>
+<td style="text-align: right;">0.1762546</td>
+<td style="text-align: right;">-8.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Long Beach</td>
+<td style="text-align: right;">-0.0620272</td>
+<td style="text-align: right;">-10.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Martha\’s Vineyard</td>
+<td style="text-align: right;">-0.2857143</td>
+<td style="text-align: right;">-11.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Seattle Tacoma Intl</td>
+<td style="text-align: right;">-1.0990991</td>
+<td style="text-align: right;">-11.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Honolulu Intl</td>
+<td style="text-align: right;">-1.3651926</td>
+<td style="text-align: right;">-7.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">John Wayne Arpt Orange Co</td>
+<td style="text-align: right;">-7.8682266</td>
+<td style="text-align: right;">-11.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Palm Springs Intl</td>
+<td style="text-align: right;">-12.7222222</td>
+<td style="text-align: right;">-13.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="b" class="level5">
+<h5 class="anchored" data-anchor-id="b">b</h5>
+<p>I use distance/flightduration to represent the average speed of each flight.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>flight_with_Speed <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">FlightDuration =</span> air_time<span class="sc">/</span><span class="dv">60</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Speed =</span> distance<span class="sc">/</span>FlightDuration)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>tibble_3 <span class="ot">&lt;-</span> flight_with_Speed <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(model) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">AvgSpeed =</span> <span class="fu">mean</span>(Speed), <span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(AvgSpeed)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tibble_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">model</th>
+<th style="text-align: right;">AvgSpeed</th>
+<th style="text-align: right;">number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">777-222</td>
+<td style="text-align: right;">482.6254</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>777-222 has the largest average speed 482.63 MPH and in total 4 flights.</p>
+</section>
+</section>
+<section id="problem-2" class="level1">
+<h1>Problem 2</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nnmaps <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"E:/study/Stat 506/PS4/chicago-nmmaps.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>get_temp <span class="ot">&lt;-</span> <span class="cf">function</span>(month, year, data, <span class="at">celsius =</span> <span class="cn">FALSE</span>, <span class="at">average_fn =</span> mean){</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  valid_month_names <span class="ot">&lt;-</span> <span class="fu">c</span>(month.abb, month.name)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(month) <span class="sc">&amp;&amp;</span> <span class="sc">!</span><span class="fu">is.character</span>(month)){</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Month must be a numeric value or a string"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.numeric</span>(month) <span class="sc">&amp;&amp;</span> <span class="sc">!</span>(month <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)){</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Numeric month must be in the range of 1-12"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.character</span>(month) <span class="sc">&amp;&amp;</span> <span class="sc">!</span>(month <span class="sc">%in%</span> valid_month_names)){</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"String month must be a valid month abbreviation or name"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span> <span class="fu">is.numeric</span>(year)){</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Year must be a numeric value."</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (year <span class="sc">&lt;</span> <span class="dv">1997</span> <span class="sc">||</span> year <span class="sc">&gt;</span> <span class="dv">2001</span>){</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>((<span class="st">"Year must be 1997-2001"</span>))</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span> <span class="fu">is.logical</span>(celsius)){</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"celcius must be a logical value"</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span> <span class="fu">is.function</span>(average_fn)){</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"average_fn must be a function"</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.character</span>(month)){</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    month <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">match</span>(month, month.abb), <span class="fu">match</span>(month, month.name))</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    month <span class="ot">&lt;-</span> month[<span class="sc">!</span><span class="fu">is.na</span>(month)]</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  avgtemp_F <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(month_numeric <span class="sc">==</span> {{month}}, year <span class="sc">==</span> {{year}}) <span class="sc">%&gt;%</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">avgtemp_F =</span> <span class="fu">average_fn</span>(temp))</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (celsius){</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    avgtemp_C <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(month_numeric <span class="sc">==</span> {{month}}, year <span class="sc">==</span> {{year}}) <span class="sc">%&gt;%</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">temp_C =</span> (temp <span class="sc">-</span> <span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">avgtemp_C =</span> <span class="fu">average_fn</span>(temp_C))</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(avgtemp_C)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(avgtemp_F)</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_temp</span>(<span class="st">"Apr"</span>, <span class="dv">1999</span>, <span class="at">data =</span> nnmaps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  avgtemp_F
+1      49.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_temp</span>(<span class="st">"Apr"</span>, <span class="dv">1999</span>, <span class="at">data =</span> nnmaps, <span class="at">celsius =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  avgtemp_C
+1  9.888889</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_temp</span>(<span class="dv">10</span>, <span class="dv">1998</span>, <span class="at">data =</span> nnmaps, <span class="at">average_fn =</span> median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  avgtemp_F
+1        55</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_temp</span>(<span class="dv">13</span>, <span class="dv">1998</span>, <span class="at">data =</span> nnmaps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Numeric month must be in the range of 1-12</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_temp</span>(<span class="dv">2</span>, <span class="dv">2005</span>, <span class="at">data =</span> nnmaps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Year must be 1997-2001</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_temp</span>(<span class="st">"November"</span>, <span class="dv">1999</span>, <span class="at">data =</span>nnmaps, <span class="at">celsius =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">average_fn =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>           x <span class="sc">%&gt;%</span> sort <span class="ot">-&gt;</span> x</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>           x[<span class="dv">2</span><span class="sc">:</span>(<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)] <span class="sc">%&gt;%</span> mean <span class="sc">%&gt;%</span> return</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>         })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  avgtemp_C
+1  7.301587</code></pre>
+</div>
+</div>
+</section>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
+<section id="a" class="level5">
+<h5 class="anchored" data-anchor-id="a">a</h5>
+<pre><code>%let in_path = ~/sasuser.v94;
+%let out_path = ~/sasuser.v94; 
+libname in_lib "&amp;in_path."; 
+libname out_lib "&amp;out_path.";
+
+/*Sort the data by the order of state and rename it*/
+proc sort
+  data=in_lib.recs2020_public_v5
+  out=out_lib.recs2020; 
+  by state_name; 
+run; 
+/*add a column which is the square of nweight*/
+data out_lib.recs2020;
+  set in_lib.recs2020;
+  nweight_sq = nweight * nweight;
+run; 
+/*aggregate the data by state and prepare to calculate the ESS*/
+proc summary data=out_lib.recs2020;
+  class state_name; 
+  output out=out_lib.ess_by_state_recs2020
+    sum(nweight) = num
+    sum(nweight_sq) = den;
+run; 
+/*calculate the ESS*/
+data out_lib.ess_by_state_recs2020_1; 
+  set in_lib.ess_by_state_recs2020;
+  where _type_ = 1; 
+  ess = num * num / den; 
+  drop num den _type_;
+run;
+/*Calculate which state has the most percentage*/
+proc sql;
+  select state_name, (ess / sum(ess)) as record_percentage
+  from out_lib.ess_by_state_recs2020_1
+  order by record_percentage desc;
+quit;
+/*Calculate how much percentage Michigan has*/
+proc sql;
+  select state_name, (ess / sum(ess)) as record_percentage
+  from out_lib.ess_by_state_recs2020_1
+  having state_name = "Michigan";
+quit;</code></pre>
+</section>
+<section id="b-1" class="level5">
+<h5 class="anchored" data-anchor-id="b-1">b</h5>
+<pre class="sas"><code>/*Only select positive value*/
+data out_lib.positive_dollarel;
+  set out_lib.recs2020_public_v5;
+  if DOLLAREL &gt; 0;
+run;
+/*draw the histogram*/
+proc sgplot data=out_lib.positive_dollarel;
+  histogram DOLLAREL;
+run;</code></pre>
+</section>
+<section id="c" class="level5">
+<h5 class="anchored" data-anchor-id="c">c</h5>
+<pre class="sas"><code>/*take the log of DOLLAREL*/
+data out_lib.log_dollarel;
+  set out_lib.positive_dollarel;
+  logDOLLAREL = log(DOLLAREL);
+run;
+/*draw the histogram*/
+proc sgplot data=out_lib.log_dollarel;
+  histogram logDOLLAREL;
+run;</code></pre>
+</section>
+<section id="d" class="level5">
+<h5 class="anchored" data-anchor-id="d">d</h5>
+<pre class="sas"><code>/*clean the data*/
+data out_lib.P3Q4;
+  set in_lib.log_dollarel;
+  if PRKGPLC1 ne -2;
+run;
+/*do regression*/
+proc reg data=in_lib.P3Q4 plots(maxpoints=none);
+  model logDOLLAREL = TOTROOMS PRKGPLC1;
+  weight NWEIGHT;
+run;</code></pre>
+</section>
+<section id="e" class="level5">
+<h5 class="anchored" data-anchor-id="e">e</h5>
+<pre class="sas"><code>/*Calculate the predicted value*/
+proc reg data=in_lib.P3Q4 plots(maxpoints=none);
+  model logDOLLAREL = TOTROOMS PRKGPLC1;
+  weight NWEIGHT;
+  output out=out_lib.PredictedData predicted=predicted_logDOLLAREL;
+run;
+
+data out_lib.predict_vs_actual;
+  set in_lib.predicteddata;
+  predicted_DOLLAREL = exp(predicted_logDOLLAREL);
+  keep DOLLAREL predicted_DOLLAREL;
+run;
+/*draw scatter plot*/
+proc sgplot data=out_lib.predict_vs_actual;
+  scatter x=DOLLAREL y=predicted_DOLLAREL;
+  xaxis label='Actual DOLLAREL';
+  yaxis label='Predicted DOLLAREL';
+  title 'Scatter Plot between Actual &amp; Predicted DOLLAREL';
+run;</code></pre>
+</section>
+</section>
+<section id="problem-4" class="level1">
+<h1>Problem 4</h1>
+<section id="a-1" class="level5">
+<h5 class="anchored" data-anchor-id="a-1">a</h5>
+<p>The codebook was generated by the descriptive statistics of all variables by a statistical software.</p>
+</section>
+<section id="sas-section" class="level3">
+<h3 class="anchored" data-anchor-id="sas-section">SAS Section</h3>
+<section id="b-2" class="level5">
+<h5 class="anchored" data-anchor-id="b-2">b</h5>
+<pre class="sas"><code>%let in_path = ~/sasuser.v94;
+%let out_path = ~/sasuser.v94; 
+libname in_lib "&amp;in_path."; 
+libname out_lib "&amp;out_path.";
+
+LIBNAME PS4Q4 '~/sasuser.v94/';
+
+proc sql;
+    create table PS4Q4.sasdata AS
+    select CaseID, B3, ND2, B7_b, GH1, ppeducat, race_5cat, weight_pop
+    from PS4Q4.public2022;
+quit;</code></pre>
+</section>
+<section id="c1" class="level5">
+<h5 class="anchored" data-anchor-id="c1">c(1)</h5>
+<pre class="sas"><code>proc export data=PS4Q4.sasdata
+    outfile= "&amp;out_path/Problem4.csv"
+    dbms=csv;
+run;</code></pre>
+</section>
+</section>
+<section id="stata-section" class="level3">
+<h3 class="anchored" data-anchor-id="stata-section">Stata Section</h3>
+<section id="c2" class="level5">
+<h5 class="anchored" data-anchor-id="c2">c(2)</h5>
+<div class="sourceCode" id="cb29"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">insheet</span> <span class="kw">using</span> <span class="st">"E:\study\Stat 506\PS4\Problem4.csv"</span>, <span class="kw">clear</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>(8 vars, 11,667 <span class="kw">obs</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="d-1" class="level5">
+<h5 class="anchored" data-anchor-id="d-1">d</h5>
+<p>I can demonstrate that I have successfully extracted the appropriate data by showing the number of observations and variables.</p>
+<pre><code>. summarize
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      caseid |     11,667    5889.991    3397.957          1      11775
+          b3 |     11,667    2.764035    .9363138          1          5
+         nd2 |     11,667    2.633753     .772071          1          5
+        b7_b |     11,667    1.825148    .7296764          1          4
+         gh1 |     11,667    1.964944    .9790652          1          4
+-------------+---------------------------------------------------------
+    ppeducat |     11,667    3.071398    .9462462          1          4
+   race_5cat |     11,667    1.630925    1.090644          1          5
+  weight_pop |     11,667    21866.31    10952.98   3666.639   88732.65</code></pre>
+</section>
+<section id="e-1" class="level5">
+<h5 class="anchored" data-anchor-id="e-1">e</h5>
+<div class="sourceCode" id="cb31"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>. * <span class="fu">e</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">egen</span> binary_b3 = <span class="fu">group</span>(b3), <span class="kw">label</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>. <span class="kw">replace</span> binary_b3 = 0 <span class="kw">if</span> b3 &lt;= 2</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>(4,296 <span class="fu">real</span> changes made)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>. <span class="kw">replace</span> binary_b3 = 1 <span class="kw">if</span> b3 &gt;= 3</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>(7,371 <span class="fu">real</span> changes made)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>. <span class="kw">drop</span> b3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="f" class="level5">
+<h5 class="anchored" data-anchor-id="f">f</h5>
+<div class="sourceCode" id="cb32"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>. * <span class="kw">use</span> <span class="kw">logit</span> command</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">svyset</span> caseid [pw=weight_pop], psu(caseid)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>Sampling weights: weight_pop</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>             <span class="kw">VCE</span>: <span class="kw">linearized</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>     Single unit: <span class="fu">missing</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>        Strata 1: &lt;one&gt;</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a> Sampling unit 1: caseid</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>           FPC 1: &lt;<span class="bn">zero</span>&gt;</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>. <span class="kw">svy</span>: <span class="kw">logit</span> binary_b3 i.nd2 i.b7_b i.gh1 i.ppeducat i.race_5cat</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>(running <span class="kw">logit</span> <span class="kw">on</span> estimation <span class="kw">sample</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>Survey: Logistic regression</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>Number <span class="kw">of</span> <span class="kw">strata</span> =      1                        Number <span class="kw">of</span> <span class="kw">obs</span>   =      11,667</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>Number <span class="kw">of</span> PSUs   = 11,667                        Population <span class="kw">size</span> = 255,114,223</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>                                                 Design df       =      11,666</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>                                                 <span class="fu">F</span>(17, 11650)    =       56.70</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>                                                 Prob &gt; <span class="fu">F</span>        =      0.0000</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>             |             Linearized</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>   binary_b3 | Coefficient  <span class="fu">std</span>. err.      t    P&gt;|t|     [95% conf. interval]</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>         nd2 |</span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>          2  |   .0816722   .0925755     0.88   0.378    -.0997913    .2631356</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>          3  |   .0618535   .0854686     0.72   0.469    -.1056792    .2293863</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>          4  |   .2533887   .2045978     1.24   0.216    -.1476572    .6544347</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>          5  |    .229354   .1672799     1.37   0.170    -.0985426    .5572505</span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>        b7_b |</span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>          2  |   1.110649   .0488662    22.73   0.000     1.014863    1.206435</span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>          3  |   1.806251   .0796863    22.67   0.000     1.650052    1.962449</span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>          4  |   2.485125   .3463415     7.18   0.000     1.806238    3.164013</span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>         gh1 |</span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a>          2  |  -.0702921    .056382    -1.25   0.213    -.1808102     .040226</span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a>          3  |   .0190607   .0587346     0.32   0.746    -.0960689    .1341904</span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a>          4  |   .3465325   .0994184     3.49   0.000     .1516557    .5414092</span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a>    ppeducat |</span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a>          2  |   .0767668   .1036364     0.74   0.459    -.1263778    .2799115</span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a>          3  |   .1075004   .1008067     1.07   0.286    -.0900975    .3050983</span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a>          4  |   .2288346    .099574     2.30   0.022     .0336528    .4240164</span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a>   race_5cat |</span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a>          2  |   .7060141   .0810818     8.71   0.000     .5470803     .864948</span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a>          3  |   .1635498   .0711263     2.30   0.021     .0241303    .3029693</span>
+<span id="cb32-50"><a href="#cb32-50" aria-hidden="true" tabindex="-1"></a>          4  |   .4567994   .1259942     3.63   0.000     .2098298    .7037691</span>
+<span id="cb32-51"><a href="#cb32-51" aria-hidden="true" tabindex="-1"></a>          5  |  -.0210142   .1659436    -0.13   0.899    -.3462915    .3042631</span>
+<span id="cb32-52"><a href="#cb32-52" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-53"><a href="#cb32-53" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |  -.4852955   .1301287    -3.73   0.000    -.7403696   -.2302214</span>
+<span id="cb32-54"><a href="#cb32-54" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb32-55"><a href="#cb32-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-56"><a href="#cb32-56" aria-hidden="true" tabindex="-1"></a>. * <span class="kw">use</span> <span class="kw">logistic</span> command</span>
+<span id="cb32-57"><a href="#cb32-57" aria-hidden="true" tabindex="-1"></a>. <span class="kw">svyset</span> caseid [pw=weight_pop], psu(caseid)</span>
+<span id="cb32-58"><a href="#cb32-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-59"><a href="#cb32-59" aria-hidden="true" tabindex="-1"></a>Sampling weights: weight_pop</span>
+<span id="cb32-60"><a href="#cb32-60" aria-hidden="true" tabindex="-1"></a>             <span class="kw">VCE</span>: <span class="kw">linearized</span></span>
+<span id="cb32-61"><a href="#cb32-61" aria-hidden="true" tabindex="-1"></a>     Single unit: <span class="fu">missing</span></span>
+<span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a>        Strata 1: &lt;one&gt;</span>
+<span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a> Sampling unit 1: caseid</span>
+<span id="cb32-64"><a href="#cb32-64" aria-hidden="true" tabindex="-1"></a>           FPC 1: &lt;<span class="bn">zero</span>&gt;</span>
+<span id="cb32-65"><a href="#cb32-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-66"><a href="#cb32-66" aria-hidden="true" tabindex="-1"></a>. <span class="kw">svy</span>: <span class="kw">logit</span> binary_b3 i.nd2 i.b7_b i.gh1 i.ppeducat i.race_5cat</span>
+<span id="cb32-67"><a href="#cb32-67" aria-hidden="true" tabindex="-1"></a>(running <span class="kw">logit</span> <span class="kw">on</span> estimation <span class="kw">sample</span>)</span>
+<span id="cb32-68"><a href="#cb32-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-69"><a href="#cb32-69" aria-hidden="true" tabindex="-1"></a>Survey: Logistic regression</span>
+<span id="cb32-70"><a href="#cb32-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a>Number <span class="kw">of</span> <span class="kw">strata</span> =      1                        Number <span class="kw">of</span> <span class="kw">obs</span>   =      11,667</span>
+<span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a>Number <span class="kw">of</span> PSUs   = 11,667                        Population <span class="kw">size</span> = 255,114,223</span>
+<span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a>                                                 Design df       =      11,666</span>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a>                                                 <span class="fu">F</span>(17, 11650)    =       56.70</span>
+<span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a>                                                 Prob &gt; <span class="fu">F</span>        =      0.0000</span>
+<span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-77"><a href="#cb32-77" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb32-78"><a href="#cb32-78" aria-hidden="true" tabindex="-1"></a>             |             Linearized</span>
+<span id="cb32-79"><a href="#cb32-79" aria-hidden="true" tabindex="-1"></a>   binary_b3 | Coefficient  <span class="fu">std</span>. err.      t    P&gt;|t|     [95% conf. interval]</span>
+<span id="cb32-80"><a href="#cb32-80" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb32-81"><a href="#cb32-81" aria-hidden="true" tabindex="-1"></a>         nd2 |</span>
+<span id="cb32-82"><a href="#cb32-82" aria-hidden="true" tabindex="-1"></a>          2  |   .0816722   .0925755     0.88   0.378    -.0997913    .2631356</span>
+<span id="cb32-83"><a href="#cb32-83" aria-hidden="true" tabindex="-1"></a>          3  |   .0618535   .0854686     0.72   0.469    -.1056792    .2293863</span>
+<span id="cb32-84"><a href="#cb32-84" aria-hidden="true" tabindex="-1"></a>          4  |   .2533887   .2045978     1.24   0.216    -.1476572    .6544347</span>
+<span id="cb32-85"><a href="#cb32-85" aria-hidden="true" tabindex="-1"></a>          5  |    .229354   .1672799     1.37   0.170    -.0985426    .5572505</span>
+<span id="cb32-86"><a href="#cb32-86" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-87"><a href="#cb32-87" aria-hidden="true" tabindex="-1"></a>        b7_b |</span>
+<span id="cb32-88"><a href="#cb32-88" aria-hidden="true" tabindex="-1"></a>          2  |   1.110649   .0488662    22.73   0.000     1.014863    1.206435</span>
+<span id="cb32-89"><a href="#cb32-89" aria-hidden="true" tabindex="-1"></a>          3  |   1.806251   .0796863    22.67   0.000     1.650052    1.962449</span>
+<span id="cb32-90"><a href="#cb32-90" aria-hidden="true" tabindex="-1"></a>          4  |   2.485125   .3463415     7.18   0.000     1.806238    3.164013</span>
+<span id="cb32-91"><a href="#cb32-91" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-92"><a href="#cb32-92" aria-hidden="true" tabindex="-1"></a>         gh1 |</span>
+<span id="cb32-93"><a href="#cb32-93" aria-hidden="true" tabindex="-1"></a>          2  |  -.0702921    .056382    -1.25   0.213    -.1808102     .040226</span>
+<span id="cb32-94"><a href="#cb32-94" aria-hidden="true" tabindex="-1"></a>          3  |   .0190607   .0587346     0.32   0.746    -.0960689    .1341904</span>
+<span id="cb32-95"><a href="#cb32-95" aria-hidden="true" tabindex="-1"></a>          4  |   .3465325   .0994184     3.49   0.000     .1516557    .5414092</span>
+<span id="cb32-96"><a href="#cb32-96" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-97"><a href="#cb32-97" aria-hidden="true" tabindex="-1"></a>    ppeducat |</span>
+<span id="cb32-98"><a href="#cb32-98" aria-hidden="true" tabindex="-1"></a>          2  |   .0767668   .1036364     0.74   0.459    -.1263778    .2799115</span>
+<span id="cb32-99"><a href="#cb32-99" aria-hidden="true" tabindex="-1"></a>          3  |   .1075004   .1008067     1.07   0.286    -.0900975    .3050983</span>
+<span id="cb32-100"><a href="#cb32-100" aria-hidden="true" tabindex="-1"></a>          4  |   .2288346    .099574     2.30   0.022     .0336528    .4240164</span>
+<span id="cb32-101"><a href="#cb32-101" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-102"><a href="#cb32-102" aria-hidden="true" tabindex="-1"></a>   race_5cat |</span>
+<span id="cb32-103"><a href="#cb32-103" aria-hidden="true" tabindex="-1"></a>          2  |   .7060141   .0810818     8.71   0.000     .5470803     .864948</span>
+<span id="cb32-104"><a href="#cb32-104" aria-hidden="true" tabindex="-1"></a>          3  |   .1635498   .0711263     2.30   0.021     .0241303    .3029693</span>
+<span id="cb32-105"><a href="#cb32-105" aria-hidden="true" tabindex="-1"></a>          4  |   .4567994   .1259942     3.63   0.000     .2098298    .7037691</span>
+<span id="cb32-106"><a href="#cb32-106" aria-hidden="true" tabindex="-1"></a>          5  |  -.0210142   .1659436    -0.13   0.899    -.3462915    .3042631</span>
+<span id="cb32-107"><a href="#cb32-107" aria-hidden="true" tabindex="-1"></a>             |</span>
+<span id="cb32-108"><a href="#cb32-108" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |  -.4852955   .1301287    -3.73   0.000    -.7403696   -.2302214</span>
+<span id="cb32-109"><a href="#cb32-109" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="g1" class="level5">
+<h5 class="anchored" data-anchor-id="g1">g(1)</h5>
+<div class="sourceCode" id="cb33"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">outsheet</span> <span class="kw">using</span> <span class="st">"E:\study\Stat 506\PS4\Problem4_data_exported.csv"</span>, <span class="kw">comma</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(602);</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="r-section" class="level3">
+<h3 class="anchored" data-anchor-id="r-section">R Section</h3>
+<section id="g2" class="level5">
+<h5 class="anchored" data-anchor-id="g2">g(2)</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"E:/study/Stat 506/PS4/Problem4_data_exported.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="h" class="level5">
+<h5 class="anchored" data-anchor-id="h">h</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: grid</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'Matrix'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:tidyr':
+
+    expand, pack, unpack</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: survival</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'survey'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    dotchart</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>binary_b3 <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(data<span class="sc">$</span>binary_b3)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(binary_b3 <span class="sc">~</span> <span class="fu">as.factor</span>(nd2) <span class="sc">+</span> <span class="fu">as.factor</span>(b7_b) <span class="sc">+</span> <span class="fu">as.factor</span>(gh1) <span class="sc">+</span> <span class="fu">as.factor</span>(ppeducat) <span class="sc">+</span> <span class="fu">as.factor</span>(race_5cat), <span class="at">design =</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span> caseid, <span class="at">weight =</span> <span class="sc">~</span> weight_pop, <span class="at">data =</span> data), <span class="at">family =</span> quasibinomial)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+svyglm(formula = binary_b3 ~ as.factor(nd2) + as.factor(b7_b) + 
+    as.factor(gh1) + as.factor(ppeducat) + as.factor(race_5cat), 
+    design = svydesign(id = ~caseid, weight = ~weight_pop, data = data), 
+    family = quasibinomial)
+
+Survey design:
+svydesign(id = ~caseid, weight = ~weight_pop, data = data)
+
+Coefficients:
+                      Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           -0.48530    0.13013  -3.729 0.000193 ***
+as.factor(nd2)2        0.08167    0.09258   0.882 0.377674    
+as.factor(nd2)3        0.06185    0.08547   0.724 0.469265    
+as.factor(nd2)4        0.25339    0.20460   1.238 0.215564    
+as.factor(nd2)5        0.22935    0.16728   1.371 0.170375    
+as.factor(b7_b)2       1.11065    0.04887  22.728  &lt; 2e-16 ***
+as.factor(b7_b)3       1.80625    0.07969  22.667  &lt; 2e-16 ***
+as.factor(b7_b)4       2.48513    0.34634   7.175 7.65e-13 ***
+as.factor(gh1)2       -0.07029    0.05638  -1.247 0.212527    
+as.factor(gh1)3        0.01906    0.05873   0.325 0.745548    
+as.factor(gh1)4        0.34653    0.09942   3.486 0.000493 ***
+as.factor(ppeducat)2   0.07677    0.10364   0.741 0.458870    
+as.factor(ppeducat)3   0.10750    0.10081   1.066 0.286264    
+as.factor(ppeducat)4   0.22883    0.09957   2.298 0.021571 *  
+as.factor(race_5cat)2  0.70601    0.08108   8.707  &lt; 2e-16 ***
+as.factor(race_5cat)3  0.16355    0.07113   2.299 0.021498 *  
+as.factor(race_5cat)4  0.45680    0.12599   3.626 0.000290 ***
+as.factor(race_5cat)5 -0.02101    0.16594  -0.127 0.899232    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.002862)
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pseudo_R_sq <span class="ot">&lt;-</span> <span class="fu">psrsq</span>(model)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>pseudo_R_sq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1092919</code></pre>
+</div>
+</div>
+<p>The Pseudo-R^2 is 0.109.</p>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
