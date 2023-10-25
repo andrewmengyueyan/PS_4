@@ -73,13 +73,13 @@ library(tidyverse)
 get_temp <- function(month, year, data, celsius = FALSE, average_fn = mean){
   valid_month_names <- c(month.abb, month.name)
   if (!is.numeric(month) && !is.character(month)){
-    message("Month must be a numeric value or a string.")
+    message("Month must be a numeric value or a string")
     return(NULL)
   } else if (is.numeric(month) && !(month %in% 1:12)){
     message("Numeric month must be in the range of 1-12")
     return(NULL)
   } else if (is.character(month) && !(month %in% valid_month_names)){
-    message("String month must be a valid month abbreviation or name (e.g., 'Jan' for January).")
+    message("String month must be a valid month abbreviation or name")
     return(NULL)
   }
   if (! is.numeric(year)){
